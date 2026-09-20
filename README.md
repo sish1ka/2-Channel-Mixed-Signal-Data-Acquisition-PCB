@@ -355,14 +355,13 @@ The simulated ADC input remains within the 0–3.3 V range and is suitable for c
 
 ### Results
 
-| Verification                |                Theoretical | Measured | Error | Result  |
-| --------------------------- | -------------------------: | -------: | ----: | ------- |
-| Voltage scaling             |                   0–1.82 V | 0–1.82 V |     — | Pass    |
-| Negative voltage protection | Negative excursion clamped |  Pending |     — | Pending |
-| Buffer                      |                    Pending |  Pending |     — | Pending |
-| Filter cutoff               |                    ~297 Hz |  Pending |     — | Pending |
-| Complete analog chain       |                    Pending |  Pending |     — | Pending |
-| PCB DRC errors              |                          0 |  Pending |     — | Pending |
+| Verification                | Theoretical                | Measured                   | Error | Result |
+| --------------------------- | -------------------------- | -------------------------- | ----: | ------ |
+| Voltage scaling             | 0–1.89 V                   | 0–1.89 V                   |     — | Pass   |
+| Negative voltage protection | Negative excursion clamped | Negative excursion clamped |     — | Pass   |
+| Buffer                      | Unity gain                 | Unity gain                 |     — | Pass   |
+| Filter cutoff               | ~297 Hz                    | ~297 Hz                    |     — | Pass   |
+| Complete analog chain       | 0–3.0 V ADC input          | 0–2.9 V ADC input          | ~3.3% | Pass   |
 
 ## PCB Design
 
