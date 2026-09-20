@@ -205,6 +205,94 @@ The buffer output closely follows the voltage-divider output. The buffer input a
 
 ![Buffer Verification](Documentation/test-03-buffer.png)
 
+### 4. Sallen-Key Filter Response Verification
+
+**Purpose:**
+Verify that the Sallen-Key stage provides the intended second-order low-pass response, including the expected low-frequency gain, cutoff frequency, and roll-off behavior.
+
+**Filter Configuration:**
+
+| Parameter     |       Value |
+| ------------- | ----------: |
+| R1            |     5.36 kΩ |
+| R2            |     5.36 kΩ |
+| C1            |      100 nF |
+| C2            |      100 nF |
+| Rf            |     5.90 kΩ |
+| Rg            |       10 kΩ |
+| Op-Amp Supply | 3.3 V / GND |
+
+**Theoretical Low-Pass Cutoff:**
+
+For equal resistor and capacitor values:
+
+$$
+f_c = \frac{1}{2\pi RC}
+$$
+
+$$
+f_c = \frac{1}{2\pi(5.36\,k\Omega)(100\,nF)}
+\approx 297\,Hz
+$$
+
+The Sallen-Key gain is:
+
+$$
+K = 1 + \frac{R_f}{R_g}
+$$
+
+$$
+K = 1 + \frac{5.90\,k\Omega}{10\,k\Omega}
+\approx 1.59
+$$
+
+The corresponding low-frequency magnitude is:
+
+$$
+20\log_{10}(1.59) \approx 4.03\,dB
+$$
+
+For a second-order low-pass filter, the cutoff frequency is approximately **3 dB below the passband magnitude**. Therefore, with a passband magnitude of approximately +4 dB, the expected magnitude at the cutoff is approximately +1 dB.
+
+**Procedure:**
+
+1. Set the LTspice input source to:
+
+   * DC value: `2.5 V`
+   * AC amplitude: `1 V`
+   * AC phase: `0°`
+2. Run an AC sweep using:
+   `.ac dec 100 1 100k`
+3. Plot the filter transfer function:
+   `V(FILTER_OUT)/V(BUF_OUT)`
+4. Measure the magnitude in the low-frequency passband.
+5. Measure the magnitude near the theoretical cutoff frequency of 297 Hz.
+6. Verify the expected attenuation beyond the cutoff region.
+
+**Expected Result:**
+
+| Measurement             |       Expected |
+| ----------------------- | -------------: |
+| Low-frequency gain      |      ~1.59 V/V |
+| Low-frequency magnitude |      ~+4.03 dB |
+| Cutoff frequency        |        ~297 Hz |
+| Magnitude at cutoff     |      ~+1.03 dB |
+| High-frequency roll-off | ~−40 dB/decade |
+
+**Measured Result:**
+
+* At **10 Hz:** approximately **+4 dB**
+* At **297 Hz:** approximately **+1 dB**
+* The measured response is consistent with the expected second-order low-pass behavior.
+
+**Result:** PASS
+
+The measured passband gain and attenuation at 297 Hz closely match the theoretical response. The filter therefore provides the intended low-pass behavior with a cutoff frequency of approximately 297 Hz.
+
+![Sallen-Key Filter Response](Documentation/test-04-filter-10Hz.png)
+![Sallen-Key Filter Response](Documentation/test-04-filter-297Hz.png)
+
+
 ### Results
 
 | Verification                |                Theoretical | Measured | Error | Result  |
