@@ -62,7 +62,7 @@ The analog front end is being verified using a node-by-node transient analysis.
 
 Each verification step checks a specific electrical condition before proceeding to the next stage.
 
-### 1. Voltage Scaling Verification
+### 1. Voltage divider
 
 **Purpose:**
 Verify that the input protection resistor and voltage divider produce the expected scaled voltage for a 0–5 V input signal.
@@ -115,9 +115,9 @@ The 100 ms simulation window corresponds to one complete cycle of the 10 Hz inpu
 
 **Result:** Pass
 
-![Voltage Scaling Verification](Documentation/test-01-voltage-scaling.png)
+![Voltage Scaling Verification](Documentation/test-01-voltage-divider.png)
 
-### 2. Negative Voltage Protection Verification
+### 2. Diode Voltage Protection Verification
 
 **Purpose:**
 Verify that the protection diode limits abnormal negative voltage excursions at the scaled node.
@@ -147,11 +147,13 @@ This produces a −5 V to +5 V input waveform.
 The protection diode should conduct during the negative voltage excursion and limit the negative voltage at the protected node.
 
 **Measured Result:**
-To be completed after simulation.
+Without the diode, the scaled node follows the negative input excursion. With the diode connected, the negative voltage is clamped and the scaled node no longer follows the negative excursion below the diode's forward-voltage region.
 
-**Result:** Pending
+**Result:** Pass
 
-![Negative Voltage Protection](Documentation/test-02-negative-clamp.png)
+![Negative Voltage Protection](Documentation/test-02-with-diode.png)
+
+![Negative Voltage Protection](Documentation/test-02-without-diode.png)
 
 ### Results
 
