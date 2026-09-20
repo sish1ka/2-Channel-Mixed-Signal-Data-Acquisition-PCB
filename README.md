@@ -285,7 +285,7 @@ For a second-order low-pass filter, the cutoff frequency is approximately **3 dB
 * At **297 Hz:** approximately **+1 dB**
 * The measured response is consistent with the expected second-order low-pass behavior.
 
-**Result:** PASS
+**Result:** Pass
 
 The measured passband gain and attenuation at 297 Hz closely match the theoretical response. The filter therefore provides the intended low-pass behavior with a cutoff frequency of approximately 297 Hz.
 
