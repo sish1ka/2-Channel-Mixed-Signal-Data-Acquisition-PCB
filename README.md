@@ -292,6 +292,66 @@ The measured passband gain and attenuation at 297 Hz closely match the theoretic
 ![Sallen-Key Filter Response](Documentation/test-04-filter-10Hz.png)
 ![Sallen-Key Filter Response](Documentation/test-04-filter-297Hz.png)
 
+### 5. ADC Input Range Verification
+
+**Purpose:**
+Verify that the conditioned analog signal remains within the STM32 ADC input range and that the complete analog front end provides the intended voltage scaling.
+
+**ADC Configuration:**
+
+| Parameter                    |       Value |
+| ---------------------------- | ----------: |
+| ADC voltage range            |     0–3.3 V |
+| ADC resolution               |      12-bit |
+| Input signal                 |       0–5 V |
+| ADC input filter             | 47 Ω + 1 nF |
+| Expected maximum ADC voltage |      ~3.0 V |
+
+**Procedure:**
+
+1. Connect the Sallen-Key filter output to the ADC input through the 47 Ω series resistor.
+2. Add a 1 nF capacitor from the ADC input node to GND.
+3. Apply a 0–5 V sinusoidal input using:
+   `SINE(2.5 2.5 10)`
+4. Run a transient simulation using:
+   `.tran 100m`
+5. Plot the ADC input node voltage, `V(ADC_IN)`.
+6. Verify that the ADC input remains within the 0–3.3 V operating range.
+
+**Expected Result:**
+
+For a 5 V maximum input, the nominal analog gain of approximately 0.60 V/V gives:
+
+$$
+V_{ADC,max} \approx 5V \times 0.60
+$$
+
+$$
+V_{ADC,max} \approx 3.0V
+$$
+
+The ADC input should therefore remain below the 3.3 V supply while utilizing most of the available ADC range.
+
+**Measured Result:**
+
+The simulated ADC input waveform remained sinusoidal and reached approximately **2.9 V maximum** for a 5 V maximum input.
+
+| Measurement          | Result |
+| -------------------- | -----: |
+| Input minimum        |   ~0 V |
+| Input maximum        |    5 V |
+| ADC minimum          |   ~0 V |
+| ADC maximum          | ~2.9 V |
+| ADC supply/reference |  3.3 V |
+
+The maximum ADC voltage is approximately 0.4 V below the 3.3 V supply, providing headroom while maintaining a large usable portion of the ADC input range.
+
+**Result:** Pass
+
+The simulated ADC input remains within the 0–3.3 V range and is suitable for connection to the STM32 ADC.
+
+![ADC Input Verification](Documentation/test-05-ADC.png)
+
 
 ### Results
 
