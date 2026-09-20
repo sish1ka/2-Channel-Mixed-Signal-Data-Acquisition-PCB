@@ -155,6 +155,56 @@ Without the diode, the scaled node follows the negative input excursion. With th
 
 ![Negative Voltage Protection](Documentation/test-02-without-diode.png)
 
+### 3. Buffer Verification
+
+**Purpose:**
+Verify that the voltage buffer reproduces the scaled input signal without significantly changing its voltage level. The buffer also isolates the voltage divider from the following filter stage by providing high input impedance and low output impedance.
+
+**Buffer Configuration:**
+
+| Parameter      |                                        Value |
+| -------------- | -------------------------------------------: |
+| Op-Amp         |                              UniversalOpamp2 |
+| Configuration  |                             Voltage follower |
+| Supply voltage |                                  3.3 V / 0 V |
+| Buffer input   |                       Voltage divider output |
+| Buffer output  |                                 Filter input |
+| Feedback       | Output directly connected to inverting input |
+
+**Procedure:**
+
+1. Apply the 0–5 V input signal using `SINE(2.5 2.5 10)`.
+2. Run the transient simulation for 100 ms.
+3. Measure the voltage at the output of the voltage divider.
+4. Measure the voltage at the output of the buffer.
+5. Compare the two waveforms over the full input cycle.
+
+**Expected Result:**
+
+The buffer output should closely follow the voltage-divider output with approximately unity voltage gain.
+
+$$
+A_v = \frac{V_{OUT}}{V_{IN}} \approx 1
+$$
+
+For the 0–5 V input signal, the voltage divider produces approximately 0–1.82 V. Therefore, the buffer output should also be approximately 0–1.82 V.
+
+| Measurement           | Expected Result |
+| --------------------- | --------------: |
+| Buffer input minimum  |            ~0 V |
+| Buffer input maximum  |         ~1.82 V |
+| Buffer output minimum |            ~0 V |
+| Buffer output maximum |         ~1.82 V |
+| Voltage gain          |          ~1 V/V |
+
+**Measured Result:**
+
+The buffer output closely follows the voltage-divider output. The buffer input and output waveforms overlap over the 0–1.82 V range, confirming that the voltage follower provides approximately unity gain without significantly altering the signal amplitude.
+
+**Result:** Pass
+
+![Buffer Verification](Documentation/test-03-buffer.png)
+
 ### Results
 
 | Verification                |                Theoretical | Measured | Error | Result  |
