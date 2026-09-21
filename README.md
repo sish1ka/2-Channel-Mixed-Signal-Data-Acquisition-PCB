@@ -32,7 +32,7 @@ The system is being designed and simulated using LTspice and will be implemented
 
 ## Circuit Design
 
-![Circuit Design](Documentation/KiCAD_schematic.png)
+![Circuit Design](Documentation/circuit_design.png)
 
 ## Design Summary
 
