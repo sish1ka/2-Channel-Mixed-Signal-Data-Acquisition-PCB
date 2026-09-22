@@ -122,7 +122,7 @@ The 100 ms simulation window corresponds to one complete cycle of the 10 Hz inpu
 **Purpose:**
 Verify that the protection diode limits abnormal negative voltage excursions at the scaled node.
 
-A bipolar test signal will be applied to intentionally drive the input below the normal 0–5 V operating range.
+A bipolar test signal is applied to intentionally drive the input below the normal 0–5 V operating range.
 
 **Test Signal:**
 
@@ -441,9 +441,9 @@ Connector pin assignments are defined in the KiCad schematic.
 
 ### Fabrication Outputs
 
-Gerber and drill files will be generated using KiCad for PCB manufacturing.
+Gerber and drill files are generated using KiCad for PCB manufacturing.
 
-The fabrication outputs will include:
+The fabrication outputs include:
 
 * Front and back copper
 * Front and back solder mask
@@ -451,11 +451,11 @@ The fabrication outputs will include:
 * Board outline
 * Drill files
 
-The generated files will be available in `KiCad/Gerbers/`.
+The generated files are available in `KiCad/Gerbers/`.
 
 ### PCB Design Verification
 
-The PCB layout will be checked using KiCad's Design Rules Checker (DRC).
+The PCB layout is checked using KiCad's Design Rules Checker (DRC).
 
 **Target:**
 
@@ -478,7 +478,8 @@ The STM32 firmware will be responsible for:
 
 *To be completed.*
 
-MATLAB will be used to process and analyze the sampled ADC data.
+MATLAB was
+used to process and analyze the sampled ADC data.
 
 ## Files
 
