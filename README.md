@@ -383,23 +383,25 @@ The board integrates two analog signal-conditioning channels with input protecti
 
 ### Components
 
-| Ref.                   | Component         |         Value | Qty. | Footprint                     |
-| ---------------------- | ----------------- | ------------: | ---: | ----------------------------- |
-| C1, C2, C4, C5, C7, C8 | Ceramic Capacitor |        100 nF |    6 | 0805                          |
-| C3, C6                 | Ceramic Capacitor |          1 nF |    2 | 0805                          |
-| D1, D2                 | Diode             |             — |    2 | SOD-123                       |
-| J1, J2                 | 2-Pin Header      |             — |    2 | 1×02, 2.54 mm                 |
-| J3                     | 5-Pin Header      |             — |    1 | 1×05, 2.54 mm                 |
-| J4                     | 4-Pin Header      |             — |    1 | 1×04, 2.54 mm                 |
-| R1, R7                 | Resistor          |          1 kΩ |    2 | DIN0207, 10.16 mm pitch       |
-| R2, R8                 | Resistor          |     16.455 kΩ |    2 | DIN0207, 10.16 mm pitch       |
-| R3, R9, R13, Rg1, Rg2  | Resistor          |         10 kΩ |    5 | DIN0207, 10.16 mm pitch       |
-| R4, R5, R10, R11       | Resistor          |       5.36 kΩ |    4 | DIN0207, 10.16 mm pitch       |
-| R6, R12                | Resistor          |          47 Ω |    2 | DIN0207, 10.16 mm pitch       |
-| Rf1, Rf2               | Resistor          |        5.9 kΩ |    2 | DIN0207, 10.16 mm pitch       |
-| SW1                    | Push Button       |             — |    1 | NKK GW12LJP                   |
-| U1                     | Quad Op-Amp       |       MCP6004 |    1 | DIP-14, 7.62 mm               |
-| U2                     | Microcontroller   | STM32G031K8Tx |    1 | LQFP-32, 7×7 mm, 0.8 mm pitch |
+| Ref.                   | Component         |         Value | Qty. | Footprint                                                        |
+| ---------------------- | ----------------- | ------------: | ---: | ---------------------------------------------------------------- |
+| C1, C2, C4, C5, C7, C8 | Ceramic Capacitor |        100 nF |    6 | `Capacitor_SMD:C_0805_2012Metric`                                |
+| C3, C6                 | Ceramic Capacitor |          1 nF |    2 | `Capacitor_SMD:C_0805_2012Metric`                                |
+| D1, D2                 | Diode             |             — |    2 | `Diode_SMD:D_SOD-123`                                            |
+| J1, J2                 | 2-Pin Header      |             — |    2 | `Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical`     |
+| J3                     | 5-Pin Header      |             — |    1 | `Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical`     |
+| J4                     | 4-Pin Header      |             — |    1 | `Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical`     |
+| R1, R7                 | Resistor          |          1 kΩ |    2 | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal` |
+| R2, R8                 | Resistor          |     16.455 kΩ |    2 | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal` |
+| R3, R9, R13, Rg1, Rg2  | Resistor          |         10 kΩ |    5 | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal` |
+| R4, R5, R10, R11       | Resistor          |       5.36 kΩ |    4 | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal` |
+| R6, R12                | Resistor          |          47 Ω |    2 | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal` |
+| Rf1, Rf2               | Resistor          |        5.9 kΩ |    2 | `Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal` |
+| SW1                    | Push Button       |             — |    1 | `Button_Switch_THT:SW_NKK_GW12LJP`                               |
+| U1                     | Quad Op-Amp       |       MCP6004 |    1 | `Package_DIP:DIP-14_W7.62mm`                                     |
+| U2                     | Microcontroller   | STM32G031K8Tx |    1 | `Package_QFP:LQFP-32_7x7mm_P0.8mm`                               |
+
+**Total components:** 40
 
 ### Connector Pinout
 
