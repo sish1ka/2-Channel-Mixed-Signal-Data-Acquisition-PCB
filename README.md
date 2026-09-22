@@ -365,15 +365,60 @@ The simulated ADC input remains within the 0–3.3 V range and is suitable for c
 
 ## PCB Design
 
-*PCB design will be completed after the analog front-end simulation and verification.*
+[svg](https://github.com/sish1ka/2-Channel-Mixed-Signal-Data-Acquisition-PCB/blob/main/README.md#pcb-design)
+
+The PCB was designed in KiCad based on the verified analog front-end and data acquisition circuit.
+
+The board integrates two analog signal-conditioning channels with input protection, voltage scaling, signal conditioning, filtering, and a STM32G031K8Tx microcontroller interface.
+
+### PCB Layout
+
+* **Board size:** 80 × 50 mm
+* **Design software:** KiCad
+* **Layers:** 2-layer PCB
+* **Analog channels:** 2
+* **Main controller:** STM32G031K8Tx
+* **Analog front-end:** MCP6004 quad op-amp
+* **Mounting:** Through-hole and surface-mount components
+* **Design verification:** Electrical Rules Check (ERC) and Design Rules Check (DRC)
+* **Manufacturing outputs:** Gerber files and drill files generated from the final PCB layout
 
 ### Components
 
-*To be completed.*
+[svg](https://github.com/sish1ka/2-Channel-Mixed-Signal-Data-Acquisition-PCB/blob/main/README.md#components)
+
+| Ref.                   | Component         |         Value | Qty. | Footprint                     |
+| ---------------------- | ----------------- | ------------: | ---: | ----------------------------- |
+| C1, C2, C4, C5, C7, C8 | Ceramic Capacitor |        100 nF |    6 | 0805                          |
+| C3, C6                 | Ceramic Capacitor |          1 nF |    2 | 0805                          |
+| D1, D2                 | Diode             |             — |    2 | SOD-123                       |
+| J1, J2                 | 2-Pin Header      |             — |    2 | 1×02, 2.54 mm                 |
+| J3                     | 5-Pin Header      |             — |    1 | 1×05, 2.54 mm                 |
+| J4                     | 4-Pin Header      |             — |    1 | 1×04, 2.54 mm                 |
+| R1, R7                 | Resistor          |          1 kΩ |    2 | DIN0207, 10.16 mm pitch       |
+| R2, R8                 | Resistor          |     16.455 kΩ |    2 | DIN0207, 10.16 mm pitch       |
+| R3, R9, R13, Rg1, Rg2  | Resistor          |         10 kΩ |    5 | DIN0207, 10.16 mm pitch       |
+| R4, R5, R10, R11       | Resistor          |       5.36 kΩ |    4 | DIN0207, 10.16 mm pitch       |
+| R6, R12                | Resistor          |          47 Ω |    2 | DIN0207, 10.16 mm pitch       |
+| Rf1, Rf2               | Resistor          |        5.9 kΩ |    2 | DIN0207, 10.16 mm pitch       |
+| SW1                    | Push Button       |             — |    1 | NKK GW12LJP                   |
+| U1                     | Quad Op-Amp       |       MCP6004 |    1 | DIP-14, 7.62 mm               |
+| U2                     | Microcontroller   | STM32G031K8Tx |    1 | LQFP-32, 7×7 mm, 0.8 mm pitch |
 
 ### Connector Pinout
 
-*To be completed.*
+[svg](https://github.com/sish1ka/2-Channel-Mixed-Signal-Data-Acquisition-PCB/blob/main/README.md#connector-pinout)
+
+Connector pin assignments are defined in the KiCad schematic.
+
+| Connector | Pins | Function                           |
+| --------- | ---: | ---------------------------------- |
+| J1        |  1–2 | Channel 1 interface                |
+| J2        |  1–2 | Channel 2 interface                |
+| J3        |  1–5 | Microcontroller / system interface |
+| J4        |  1–4 | Power / system interface           |
+
+> **Note:** Refer to the KiCad schematic for the complete electrical pin assignments and net names.
 
 ### Circuit Parameters
 
