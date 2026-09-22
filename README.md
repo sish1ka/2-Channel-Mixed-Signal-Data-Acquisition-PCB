@@ -365,8 +365,6 @@ The simulated ADC input remains within the 0–3.3 V range and is suitable for c
 
 ## PCB Design
 
-[svg](https://github.com/sish1ka/2-Channel-Mixed-Signal-Data-Acquisition-PCB/blob/main/README.md#pcb-design)
-
 The PCB was designed in KiCad based on the verified analog front-end and data acquisition circuit.
 
 The board integrates two analog signal-conditioning channels with input protection, voltage scaling, signal conditioning, filtering, and a STM32G031K8Tx microcontroller interface.
@@ -384,8 +382,6 @@ The board integrates two analog signal-conditioning channels with input protecti
 * **Manufacturing outputs:** Gerber files and drill files generated from the final PCB layout
 
 ### Components
-
-[svg](https://github.com/sish1ka/2-Channel-Mixed-Signal-Data-Acquisition-PCB/blob/main/README.md#components)
 
 | Ref.                   | Component         |         Value | Qty. | Footprint                     |
 | ---------------------- | ----------------- | ------------: | ---: | ----------------------------- |
@@ -406,8 +402,6 @@ The board integrates two analog signal-conditioning channels with input protecti
 | U2                     | Microcontroller   | STM32G031K8Tx |    1 | LQFP-32, 7×7 mm, 0.8 mm pitch |
 
 ### Connector Pinout
-
-[svg](https://github.com/sish1ka/2-Channel-Mixed-Signal-Data-Acquisition-PCB/blob/main/README.md#connector-pinout)
 
 Connector pin assignments are defined in the KiCad schematic.
 
