@@ -1,4 +1,4 @@
-# 2-Channel-Mixed-Signal-Data-Acquisition-PCB# 2-Channel Mixed-Signal Data Acquisition PCB
+# 2-Channel-Mixed-Signal-Data-Acquisition-PCB
 
 ## Overview
 
