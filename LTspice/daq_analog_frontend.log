@@ -1,0 +1,19 @@
+LTspice 26.0.2 for MacOS
+Circuit: /Users/sei/Documents/LTspice/daq_analog_frontend.net
+Start Time: Sat Sep 19 23:51:31 2026
+solver = Normal
+Maximum thread count: 8
+tnom = 27
+temp = 27
+method = trap
+Direct Newton iteration failed to find operating point.
+Starting Gmin stepping
+Gmin stepping succeeded in finding the operating point.
+
+Total elapsed time: 0.245 seconds.
+
+Files loaded:
+/Users/sei/Documents/LTspice/daq_analog_frontend.net
+/Users/sei/Library/Application Support/LTspice/Bottles/ltspice/drive_c/users/crossover/AppData/Local/LTspice/lib/cmp/standard.dio
+/Users/sei/Library/Application Support/LTspice/Bottles/ltspice/drive_c/users/crossover/AppData/Local/LTspice/lib/sub/UniversalOpAmp2.lib
+
