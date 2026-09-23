@@ -6,7 +6,7 @@ This project involves the design of a 2-channel mixed-signal data acquisition sy
 
 Each analog input passes through input protection, voltage scaling, buffering, and active low-pass filtering before being sampled by a 12-bit ADC on an STM32 microcontroller.
 
-The system is being designed and simulated using LTspice and will be implemented as a 2-layer PCB using KiCad. Embedded C will be used for microcontroller data acquisition and MATLAB will be used for data analysis.
+The system is being designed and simulated using LTspice and will be implemented as a 2-layer PCB using KiCad. In the future, Embedded C will be used for microcontroller data acquisition and MATLAB will be used for data analysis.
 
 ## Objectives
 
@@ -52,7 +52,7 @@ The system is being designed and simulated using LTspice and will be implemented
 | Analog op-amp             |              MCP6004 |
 | PCB layers                |                    2 |
 | PCB dimensions            |          ~80 × 50 mm |
-| UART baud rate            |          460800 baud |
+| UART baud rate            |          460800 baud |z
 
 ## LTspice Simulation
 
@@ -416,6 +416,18 @@ Connector pin assignments are defined in the KiCad schematic.
 
 > **Note:** Refer to the KiCad schematic for the complete electrical pin assignments and net names.
 
+### Power
+
+The board does not include an onboard voltage regulator. The 3.3 V
+rail (STM32 VDD/VDDA, MCP6004 V+) is supplied externally through
+**J4 pin 1**, which is expected to be driven directly from a
+regulated 3.3 V source — for example, the 3.3 V pin available on
+many common USB-to-UART adapters (FTDI FT232RL, CP2102, etc.), or a
+bench supply. This was a deliberate simplification to reduce
+component count on a first custom board; a future revision could
+add an onboard LDO (e.g. AMS1117-3.3) to accept a single unregulated
+5 V input instead.
+
 ### Circuit Parameters
 
 | Parameter        |                Value |
@@ -465,21 +477,46 @@ The PCB layout is checked using KiCad's Design Rules Checker (DRC).
 
 ## Firmware
 
-*To be completed.*
+**Status:** written and compiles cleanly against the STM32G0 HAL;
+not flashed or tested on hardware (see Project Status above).
 
-The STM32 firmware will be responsible for:
+The firmware implements:
 
-* ADC configuration
-* ADC sampling
-* DMA-based data acquisition
-* UART data transmission
+* Clock configuration: HSI16 + PLL → 64 MHz HCLK
+* ADC1: 2 channels (PA0/PA1), 12-bit, scan mode
+* TIM3: configured to trigger ADC conversions at 4 kHz
+* DMA: circular-mode capture into a 256-sample ring buffer
+  (128 channel-pairs), with half/full-transfer callbacks
+* USART1: 460800 baud, TX via DMA
+* A 9-byte binary frame protocol — sync bytes, sequence number,
+  CH1/CH2 12-bit ADC codes, and an XOR checksum — for streaming
+  samples to a host PC
 
 ## MATLAB Data Analysis
 
-*To be completed.*
+**Status:** written and tested (via GNU Octave) using synthetic data
+matching the firmware's binary protocol; not yet run against real
+captured hardware data.
 
-MATLAB was
-used to process and analyze the sampled ADC data.
+* `filter_analysis.m` — computes the theoretical Sallen-Key frequency
+  response directly from component values and can overlay an
+  LTspice AC-sweep export for comparison. Runs standalone, no
+  hardware needed.
+
+## Future Work
+
+If this project is picked back up:
+
+1. Fabricate the PCB (JLCPCB/PCBWay, ~80×50mm 2-layer) and obtain an
+   ST-Link programmer
+2. Flash the firmware and verify each stage in isolation (GPIO →
+   ADC polling → timer trigger → DMA → UART), per the staged
+   bring-up plan this project was designed around
+3. Fill in the DC accuracy, frequency-response, and noise
+   measurement tables with real values, and compare against the
+   LTspice/theoretical predictions already established
+4. Consider adding an onboard 3.3 V LDO so the board accepts a
+   single unregulated 5 V input
 
 ## Files
 
