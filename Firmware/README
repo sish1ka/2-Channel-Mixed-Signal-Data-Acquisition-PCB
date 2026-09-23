@@ -1,0 +1,7 @@
+What's implemented (main.c)
+Clock: HSI16 + PLL → 64 MHz HCLK
+ADC1: 2 channels (PA0/PA1), 12-bit, scan mode, triggered by TIM3
+TIM3: configured for a 4 kHz sample-pair rate (64 MHz / 16000)
+DMA: circular-mode ADC capture into a 256-sample ring buffer (128 channel-pairs), with half/full-complete callbacks
+USART1: 460800 baud, TX via DMA
+A 9-byte binary frame protocol (sync bytes, sequence number, CH1/CH2 12-bit codes, XOR checksum) matching the project spec
